@@ -37,6 +37,53 @@
     }
 */
 
+// 4. 
+/*
+const getMaxMinValue = (s) => {
+    let array = s.split(" ");
+    let min = Math.min(...array);
+    let max = Math.max(...array);
+
+    return min + " " + max
+}
+*/
+
+// 5. 
+// const getMaxMinValue = s => Math.min(...s.split(" ")) + " " + Math.max(...s.split(" "));
+
+// 6. 
+// const getMaxMinValue = s => Math.min(...s.split(" ").map(v => +v)) + " " + Math.max(...s.split(" ").map(v => +v))
+
+const getMaxMinValue = (s) => {
+    let array = s.split(" ");
+    let max = 0;
+    let min = 0;
+
+    for(let i = 0; array.length; i++ ) {
+        if(!max) {
+            max = parseInt(array[i]);
+            console.log(max)
+        }
+        if(max < parseInt(array[i])) {
+            max = parseInt(array[i]);
+        }
+    }
+    for(let i = 0; i < array.length; i++) {
+        if(min) {
+            min = parseInt(array[i]);
+        }
+        if(min > parseInt(arrayp[i])) {
+            min = parseInt(array[i]);
+        }
+    }
+    let a = String(min);
+    let b = String(max);
+    let solution = a + " " + b;
+    return solution;
+ }
+
+
+
 test('getMaxMinValue', () => {
     expect(getMaxMinValue("1 2 3 4")).toBe("1 4");
     expect(getMaxMinValue("-1 -2 -3 -4")).toBe("-4 -1")
